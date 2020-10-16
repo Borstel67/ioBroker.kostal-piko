@@ -1,0 +1,754 @@
+{
+  "common": {
+    "name": "kostal-piko",
+    "version": "0.0.1",
+    "title": "Wechselrichter Kostal Piko",
+    "titleLang": {
+      "en": "Wechselrichter Kostal Piko",
+      "de": "Wechselrichter Kostal Piko",
+      "ru": "Вексельрихтер Костал Пико",
+      "pt": "Wechselrichter Kostal Piko",
+      "nl": "Wechselrichter Kostal Piko",
+      "fr": "Wechselrichter Kostal Piko",
+      "it": "Wechselrichter Kostal Piko",
+      "es": "Wechselrichter Kostal Piko",
+      "pl": "Wechselrichter Kostal Piko",
+      "zh-cn": "Wechselrichter Kostal Piko"
+    },
+    "desc": {
+      "en": "Auslesen der Daten vom Kostal- Piko",
+      "de": "Auslesen der Daten vom Kostal-Piko",
+      "ru": "Auslesen der Daten vom Kostal- Пико",
+      "pt": "Auslesen der Daten vom Kostal- Piko",
+      "nl": "Auslesen der Daten vom Kostal- Piko",
+      "fr": "Auslesen der Daten vom Kostal- Piko",
+      "it": "Auslesen der Daten vom Kostal- Piko",
+      "es": "Auslesen der Daten vom Kostal- Piko",
+      "pl": "Auslesen der Daten vom Kostal- Piko",
+      "zh-cn": "Auslesen der Daten vom Kostal- Piko"
+    },
+    "authors": [
+      "borstel67 <git@wisser-online.de>"
+    ],
+    "platform": "Javascript/Node.js",
+    "mode": "daemon",
+    "enabled": true,
+    "license": "MIT",
+    "loglevel": "info",
+    "readme": "https://github.com/Borstel67/ioBroker.kostal-piko/blob/master/README.md",
+    "icon": "kostal-piko.png",
+    "extIcon": "https://raw.githubusercontent.com/Borstel67/ioBroker.kostal-piko/master/admin/kostal-piko.png",
+    "keywords": [ "Wechselrichter" ],
+    "type": "energy",
+    "connectionType": "local",
+    "dataSource": "poll",
+    "news": {
+      "0.0.1": {
+        "en": "initial release",
+        "de": "Erstveröffentlichung",
+        "ru": "Начальная версия",
+        "pt": "lançamento inicial",
+        "nl": "Eerste uitgave",
+        "fr": "Première version",
+        "it": "Versione iniziale",
+        "es": "Versión inicial",
+        "pl": "Pierwsze wydanie",
+        "zh-cn": "首次出版"
+      }
+    },
+    "main": "main.js",
+    "compact": true,
+    "materialize": true,
+    "materializeTab": true,
+    "supportCustoms": false,
+    "dependencies": [
+      {
+        "js-controller": ">=1.4.2",
+        "admin": ">=3.0.0"
+      }
+    ]
+  },
+  "native": {
+    "ipaddress": "",
+    "polltimelive": 10000,
+    "polltimedaily": 60000,
+    "polltimetotal": 200000
+  },
+  
+  "objects": [],
+
+  "instanceObjects": [
+    {
+      "_id": "Leistungswerte",
+      "type": "channel",
+      "common": { "name": "Leistungswerte" },
+      "native": {}
+    },
+    { 
+      "_id": "Leistungswerte.DCLeistung",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Total solar input power",
+        "type": "number",
+        "unit": "W",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    { 
+      "_id": "Leistungswerte.ACLeistung",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Grid output power without battery charging",
+        "type": "number",
+        "unit": "W",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Leistungswerte.bezogeneEnergie",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Grid input power",
+        "type": "number",
+        "unit": "W",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    { 
+      "_id": "Leistungswerte.Eigenverbrauch",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "own Consumption",
+        "type": "number",
+        "unit": "W",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    { 
+      "_id": "Leistungswerte.PVGesamtproduktion",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "total energy production",
+        "type": "number",
+        "unit": "kW",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    { 
+      "_id": "Leistungswerte.NetzFrequenz",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Grid frequency",
+        "type": "number",
+        "unit": "Hz",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    { 
+      "_id": "Leistungswerte.NetzCosPhi",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "power factor (cos phi)",
+        "type": "number",
+        "unit": "",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    { 
+      "_id": "Leistungswerte.Betriebsstatus",
+      "type": "state",
+      "common": {
+        "role": "state",
+        "name": "Operatingstate 0 = Aus 1 = Leerlauf 2 = Anfahren 3 = Einspeisen MPP 4 = abgeregelt 5 = Einspeisen 6 = 7 = 8 = ??",
+        "type": "number",
+        "unit": "",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    { 
+      "_id": "Ertrag-Tag",
+      "type": "channel",
+      "common": { "name": "statistical data daily" },
+      "native": {}
+    },
+    { 
+      "_id": "Ertrag-Tag.Hausverbrauch_d",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Daily energy house-consumption",
+        "type": "number",
+        "unit": "Wh",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    { 
+      "_id": "Ertrag-Tag.Eigenverbrauch_d",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Daily energy self-consumption",
+        "type": "number",
+        "unit": "Wh",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    { 
+      "_id": "Ertrag-Tag.Eigenverbrauchsquote_d",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Daily energy self-consumption quota",
+        "type": "number",
+        "unit": "Wh",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    { 
+      "_id": "Ertrag-Tag.Autarkiegrad_d",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Daily Degree of self-sufficiency",
+        "type": "number",
+        "unit": "%",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    { 
+      "_id": "Ertrag-Gesamt",
+      "type": "channel",
+      "common": { "name": "statistical data total lifetime" },
+      "native": {}
+    },
+    { 
+      "_id": "Ertrag-Gesamt.Ertrag_G",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "House total energy production",
+        "type": "number",
+        "unit": "kWh",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Ertrag-Gesamt.Hausverbrauch_G",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Total energy consumption of the house",
+        "type": "number",
+        "unit": "kWh",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Ertrag-Gesamt.Eigenverbrauch_G",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Total energy self-consumption",
+        "type": "number",
+        "unit": "kWh",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Ertrag-Gesamt.Eigenverbrauchsquote_G",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Total energy self-consumption quota",
+        "type": "number",
+        "unit": "%",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Ertrag-Gesamt.Autarkiegrad_G",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Total Degree of self-sufficiency",
+        "type": "number",
+        "unit": "%",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Ertrag-Gesamt.Betriebszeit",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Total operating time",
+        "type": "number",
+        "unit": "h",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Momentanwerte-PVGenertor",
+      "type": "channel",
+      "common": { "name": "Instantaneous values ​​of the PV generator" },
+      "native": {}
+    },
+    {
+      "_id": "Momentanwerte-PVGenertor.DC1Spannung",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "DC1 voltage",
+        "type": "number",
+        "unit": "V",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Momentanwerte-PVGenertor.DC1Strom",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "DC1 current",
+        "type": "number",
+        "unit": "A",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Momentanwerte-PVGenertor.DC1Leistung",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "DC1 power",
+        "type": "number",
+        "unit": "W",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Momentanwerte-PVGenertor.DC2Spannung",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "DC2 voltage",
+        "type": "number",
+        "unit": "V",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Momentanwerte-PVGenertor.DC2Strom",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "DC2 current",
+        "type": "number",
+        "unit": "A",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Momentanwerte-PVGenertor.DC2Leistung",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "DC2 power",
+        "type": "number",
+        "unit": "W",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Momentanwerte-Haus",
+      "type": "channel",
+      "common": { "name": "House instantaneous values" },
+      "native": {}
+    },
+    {
+      "_id": "Momentanwerte-Haus.HausverbrauchSolar",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "House consumption solar",
+        "type": "number",
+        "unit": "W",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Momentanwerte-Haus.HausverbrauchBatterie",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "House consumption battery",
+        "type": "number",
+        "unit": "W",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Momentanwerte-Haus.HausverbrauchNetz",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "House consumption grid",
+        "type": "number",
+        "unit": "W",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Momentanwerte-Haus.HausverbrauchPhase1",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "House consumption phase1",
+        "type": "number",
+        "unit": "W",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Momentanwerte-Haus.HausverbrauchPhase2",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "House consumption phase2",
+        "type": "number",
+        "unit": "W",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Momentanwerte-Haus.HausverbrauchPhase3",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "House consumption phase3",
+        "type": "number",
+        "unit": "W",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Momentanwerte-Netz",
+      "type": "channel",
+      "common": { "name": "Grid instantaneous values" },
+      "native": {}
+    },
+    {
+      "_id": "Momentanwerte-Netz.SpannungPhase1",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Grid voltage phase1",
+        "type": "number",
+        "unit": "V",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Momentanwerte-Netz.StromPhase1",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Grid current phase1",
+        "type": "number",
+        "unit": "A",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Momentanwerte-Netz.LeistungPhase1",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Grid power phase1",
+        "type": "number",
+        "unit": "W",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Momentanwerte-Netz.SpannungPhase2",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Grid voltage phase2",
+        "type": "number",
+        "unit": "V",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Momentanwerte-Netz.StromPhase2",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Grid current phase2",
+        "type": "number",
+        "unit": "A",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Momentanwerte-Netz.LeistungPhase2",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Grid power phase2",
+        "type": "number",
+        "unit": "W",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Momentanwerte-Netz.SpannungPhase3",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Grid voltage phase3",
+        "type": "number",
+        "unit": "V",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Momentanwerte-Netz.StromPhase3",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Grid current phase3",
+        "type": "number",
+        "unit": "A",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Momentanwerte-Netz.LeistungPhase3",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Grid power phase3",
+        "type": "number",
+        "unit": "W",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Batterie",
+      "type": "channel",
+      "common": { "name": "Batterie Daten" },
+      "native": {}
+    },
+    {
+      "_id": "Batterie.Ladezustand",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Battery charge status",
+        "type": "number",
+        "unit": "%",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Batterie.Ladezyklen",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Battery charge cycles",
+        "type": "number",
+        "unit": " ",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Batterie.Temperatur",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Battery temperature",
+        "type": "number",
+        "unit": " ",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Batterie.Spannung",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Battery voltage",
+        "type": "number",
+        "unit": "V",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Batterie.Strom",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Battery current",
+        "type": "number",
+        "unit": "A",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Batterie.Laden_Entladen",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Battery discharge charge",
+        "type": "number",
+        "unit": "",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    }
+  ]
+}
